@@ -50,6 +50,9 @@ define python::requirements (
     content => '# Puppet will install and/or update pip packages listed here',
   }
 
+  Exec { path => '/usr/bin:/bin:/usr/sbin:/sbin' }
+
+
   # SHA1 checksum to detect changes
   exec { "python_requirements_check_${name}":
     command => "sha1sum ${requirements} > ${req_crc}",
